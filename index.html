@@ -184,6 +184,31 @@
           box-shadow: 0 0 60px rgba(120, 180, 255, 0.45);
         }
       }
+
+      /* LETTER BOXES */
+      .letter-box {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 0.35rem;
+        margin: 0.14rem;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(12px);
+        padding: 0;
+      }
+      .small-caps {
+        font-variant: small-caps;
+        letter-spacing: 0.02em;
+      }
+      .letter-small {
+        font-size: 0.75em;
+      }
+      .letter-line {
+        display: inline-flex;
+        gap: 0.15rem;
+        transform-origin: center;
+      }
     </style>
 
     <script>
@@ -219,10 +244,20 @@
     <div class="shape w-30 h-30 bg-white rounded-full" style="top: 390vh; right: 30%"></div>
 
     <section class="h-screen flex flex-col justify-center items-center text-center reveal relative" data-aos="fade-up">
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-        Happy Valentine’s Day
+      <h1 class="font-bold mb-4 flex flex-wrap justify-center gap-1 uppercase text-base sm:text-lg md:text-2xl lg:text-3xl px-4 sm:px-0">
+        <span class="letter-box border-transparent w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">H</span><span class="letter-box border-transparent w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">A</span><span class="letter-box border-transparent w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">P</span><span class="letter-box border-transparent w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">P</span><span class="letter-box border-transparent w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">Y</span>
+        <span class="w-full"></span>
+        <span class="letter-line whitespace-nowrap">
+          <span class="letter-box w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12">V</span><span class="letter-box w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12">a</span><span class="letter-box w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12">l</span><span class="letter-box w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12">e</span><span class="letter-box w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12">n</span><span class="letter-box w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12">t</span><span class="letter-box w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12">i</span><span class="letter-box w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12">n</span><span class="letter-box w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12">e’</span><span class="letter-box w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12">s</span>
+        </span>
+        <span class="w-full"></span>
+        <span class="letter-line whitespace-nowrap">
+          <span class="letter-box w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12">D</span><span class="letter-box w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12">a</span><span class="letter-box w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12">y</span>
+        </span>
       </h1>
-      <p class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-2">My Love 💙</p>
+      <p class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 flex justify-center gap-1">
+        <span class="letter-box border-transparent w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">E</span><span class="letter-box border-transparent w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">M</span><span class="letter-box border-transparent w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">I</span><span class="letter-box border-transparent w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">L</span><span class="letter-box border-transparent w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">U</span><span class="letter-box border-transparent w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">T</span><span class="letter-box border-transparent w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">T</span><span class="letter-box border-transparent w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">A</span><span class="letter-box border-transparent w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">N</span>
+      </p>
       <p class="text-sm sm:text-base opacity-80 absolute bottom-6">Scroll slowly…</p>
     </section>
 
