@@ -82,8 +82,18 @@
         animation: emojiFall 4.5s linear forwards;
       }
       @keyframes emojiFall {
-        to {
-          transform: translateY(120vh);
+        0% {
+          opacity: 0;
+          transform: translateY(0);
+        }
+        20% {
+          opacity: 1;
+        }
+        80% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh);
           opacity: 0;
         }
       }
@@ -569,9 +579,22 @@
         { threshold: 0.5 },
       );
       glowObs.observe(storyBox);
+
+      // Heart rain on page load
+      window.addEventListener('load', () => {
+        for (let i = 0; i < 100; i++) {
+          const drop = document.createElement("div");
+          drop.className = "emoji-rain";
+          drop.innerText = "💙";
+          const column = i % 12; // Distribute in 12 columns for better density
+          drop.style.left = (column * 8.33 + Math.random() * 8.33) + "vw";
+          drop.style.animationDelay = (i * 0.08) + Math.random() * 0.4 + "s";
+          drop.style.fontSize = 14 + Math.random() * 6 + "px";
+          document.body.appendChild(drop);
+        }
+      });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   </body>
 </html>
-
 
