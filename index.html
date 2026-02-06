@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
 
     <style>
@@ -127,6 +128,29 @@
         font-size: 22px;
         pointer-events: none;
         animation: emojiFall 4.5s linear forwards;
+      }
+      .floating-heart,
+      .floating-grin {
+        position: fixed;
+        pointer-events: none;
+        color: #7cc4ff;
+        font-size: 64px;
+        transform: rotate(-12deg);
+        animation: floatHeart 1.6s ease forwards;
+        z-index: 50;
+      }
+      @keyframes floatHeart {
+        0% {
+          opacity: 0;
+          transform: translateY(20px) rotate(-12deg) scale(0.9);
+        }
+        20% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-120px) rotate(-12deg) scale(1.05);
+        }
       }
       @keyframes emojiFall {
         0% {
@@ -431,6 +455,21 @@
       </div>
     </section>
 
+    <section class="min-h-screen flex items-center justify-center reveal px-6" data-aos="fade-up">
+      <div class="bg-gradient-to-b from-card/70 to-transparent p-8 sm:p-10 rounded-3xl max-w-2xl text-center">
+        <p class="text-xs sm:text-sm uppercase tracking-[0.4em] opacity-70">A Little Question</p>
+        <h2 class="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold">Will You Be My Valentine?</h2>
+        <p class="mt-4 text-sm sm:text-base opacity-80">
+          Just a soft yes from you, and my whole world feels complete.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          <button id="valentineYes" class="px-8 py-3 rounded-full bg-white text-bg font-bold hover:scale-105 transition">Forever 💙</button>
+          <button id="valentineAlways" class="px-8 py-3 rounded-full border border-white/30 text-soft font-semibold hover:bg-white/10 transition">Always 💍</button>
+        </div>
+        <p id="valentineMessage" class="mt-5 text-sm sm:text-base opacity-0 transition-all duration-500"></p>
+      </div>
+    </section>
+
     <section class="h-screen flex items-center justify-center reveal px-6" data-aos="fade-up">
       <div class="w-full max-w-3xl grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
         <div class="text-center md:text-left">
@@ -442,8 +481,9 @@
           <button onclick="proposal()" class="w-full sm:w-auto px-8 py-4 bg-white text-bg rounded-full font-bold hover:scale-105 transition">
             Tap Slowly 💍
           </button>
-          <p id="final" class="text-2xl sm:text-3xl md:text-4xl hidden opacity-0 transition-all duration-1000 text-center md:text-left">
-            🪄 💎 Always. Only you. 💙
+          <p id="final" class="text-xl sm:text-2xl md:text-3xl hidden opacity-0 transition-all duration-1000 text-center md:text-left">
+            Every heartbeat, still you. 💙 <br>
+            I Love You a lot Emil 🥹
           </p>
         </div>
       </div>
@@ -468,6 +508,9 @@
       const count = document.getElementById("count");
       const storyBox = document.getElementById("storyBox");
       const final = document.getElementById("final");
+      const valentineYes = document.getElementById("valentineYes");
+      const valentineAlways = document.getElementById("valentineAlways");
+      const valentineMessage = document.getElementById("valentineMessage");
       const loveYears = document.getElementById("loveYears");
       const loveMonths = document.getElementById("loveMonths");
       const loveDays = document.getElementById("loveDays");
@@ -586,6 +629,119 @@
         storyBox.classList.remove(...storySlideClasses);
       });
 
+      if (valentineYes && valentineAlways && valentineMessage) {
+        const showMessage = (text) => {
+          valentineMessage.textContent = text;
+          valentineMessage.classList.add("opacity-100");
+        };
+
+        valentineYes.addEventListener("click", () => {
+          showMessage("I choose you, again and again. ✨");
+          const placed = [];
+          const maxHearts = 18;
+          const maxTries = 80;
+          for (let n = 0; n < maxHearts; n++) {
+            const heart = document.createElement("i");
+            heart.className = "fa-regular fa-heart floating-heart";
+            const r = Math.random();
+            const size = r < 0.25 ? 26 + Math.random() * 18 : r < 0.75 ? 50 + Math.random() * 32 : 90 + Math.random() * 40;
+            const rotate = -25 + Math.random() * 50;
+            let left = 6 + Math.random() * 88;
+            let top = 10 + Math.random() * 80;
+            let tries = 0;
+            const minDist = size * 1.25;
+            let placedOk = false;
+            while (tries < maxTries) {
+              const pxX = (left / 100) * window.innerWidth;
+              const pxY = (top / 100) * window.innerHeight;
+              let ok = true;
+              for (const p of placed) {
+                const dx = pxX - p.x;
+                const dy = pxY - p.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < (minDist + p.r)) {
+                  ok = false;
+                  break;
+                }
+              }
+              if (ok) {
+                placedOk = true;
+                break;
+              }
+              left = 6 + Math.random() * 88;
+              top = 10 + Math.random() * 80;
+              tries += 1;
+            }
+            if (!placedOk) continue;
+            placed.push({
+              x: (left / 100) * window.innerWidth,
+              y: (top / 100) * window.innerHeight,
+              r: minDist,
+            });
+            heart.style.fontSize = size + "px";
+            heart.style.transform = "rotate(" + rotate + "deg)";
+            heart.style.left = left + "%";
+            heart.style.top = top + "%";
+            heart.style.animationDuration = 1.2 + Math.random() * 0.8 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 2000);
+          }
+        });
+        valentineAlways.addEventListener("click", () => {
+          showMessage("Forever starts right here. 💍");
+          const placed = [];
+          const maxFaces = 18;
+          const maxTries = 80;
+          for (let n = 0; n < maxFaces; n++) {
+            const face = document.createElement("span");
+            face.className = "floating-grin";
+            face.textContent = "😍";
+            const r = Math.random();
+            const size = r < 0.25 ? 26 + Math.random() * 18 : r < 0.75 ? 50 + Math.random() * 32 : 90 + Math.random() * 40;
+            const rotate = -25 + Math.random() * 50;
+            let left = 6 + Math.random() * 88;
+            let top = 10 + Math.random() * 80;
+            let tries = 0;
+            const minDist = size * 1.25;
+            let placedOk = false;
+            while (tries < maxTries) {
+              const pxX = (left / 100) * window.innerWidth;
+              const pxY = (top / 100) * window.innerHeight;
+              let ok = true;
+              for (const p of placed) {
+                const dx = pxX - p.x;
+                const dy = pxY - p.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < (minDist + p.r)) {
+                  ok = false;
+                  break;
+                }
+              }
+              if (ok) {
+                placedOk = true;
+                break;
+              }
+              left = 6 + Math.random() * 88;
+              top = 10 + Math.random() * 80;
+              tries += 1;
+            }
+            if (!placedOk) continue;
+            placed.push({
+              x: (left / 100) * window.innerWidth,
+              y: (top / 100) * window.innerHeight,
+              r: minDist,
+            });
+            face.style.fontSize = size + "px";
+            face.style.transform = "rotate(" + rotate + "deg)";
+            face.style.left = left + "%";
+            face.style.top = top + "%";
+            face.style.animationDuration = 1.2 + Math.random() * 0.8 + "s";
+            document.body.appendChild(face);
+            setTimeout(() => face.remove(), 2000);
+          }
+        });
+      }
+
       function updateLoveTimer() {
         function spawnClockHeart(target) {
           if (!target) return;
@@ -612,7 +768,14 @@
           years -= 1;
         }
 
-        const currentAnchor = new Date(start.getFullYear() + years, start.getMonth() + months, start.getDate());
+        const currentAnchor = new Date(
+          start.getFullYear() + years,
+          start.getMonth() + months,
+          start.getDate(),
+          start.getHours(),
+          start.getMinutes(),
+          start.getSeconds(),
+        );
         const diffMs = Math.max(0, now - currentAnchor);
         const hours = Math.floor(diffMs / (1000 * 60 * 60)) % 24;
         const minutes = Math.floor(diffMs / (1000 * 60)) % 60;
