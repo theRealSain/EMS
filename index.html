@@ -58,55 +58,55 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 2rem;
+        font-size: 1.9rem;
         font-weight: bold;
       }
-      .slide-left {
-        animation: slideLeft 0.4s ease forwards;
+      .story-out-left {
+        animation: storyOutLeft 0.35s ease forwards;
       }
-      .slide-right {
-        animation: slideRight 0.4s ease forwards;
+      .story-out-right {
+        animation: storyOutRight 0.35s ease forwards;
       }
-      @keyframes slideLeft {
+      .story-in-left {
+        animation: storyInLeft 0.35s ease forwards;
+      }
+      .story-in-right {
+        animation: storyInRight 0.35s ease forwards;
+      }
+      @keyframes storyOutLeft {
         from {
           opacity: 1;
           transform: translateX(0);
         }
         to {
           opacity: 0;
-          transform: translateX(-100px);
+          transform: translateX(-80px);
         }
       }
-      @keyframes slideRight {
+      @keyframes storyOutRight {
         from {
           opacity: 1;
           transform: translateX(0);
         }
         to {
           opacity: 0;
-          transform: translateX(100px);
+          transform: translateX(80px);
         }
       }
-      .slide-in-left {
-        animation: slideInLeft 0.4s ease forwards;
-      }
-      .slide-in-right {
-        animation: slideInRight 0.4s ease forwards;
-      }
-      @keyframes slideInLeft {
+      @keyframes storyInLeft {
         from {
           opacity: 0;
-          transform: translateX(100px);
+          transform: translateX(80px);
         }
         to {
           opacity: 1;
           transform: translateX(0);
         }
       }
-      @keyframes slideInRight {
+      @keyframes storyInRight {
         from {
           opacity: 0;
-          transform: translateX(-100px);
+          transform: translateX(-80px);
         }
         to {
           opacity: 1;
@@ -243,18 +243,6 @@
           transform: none;
         }
       }
-      .scroll-glow {
-        animation: glowPulse 1.8s ease infinite;
-      }
-      @keyframes glowPulse {
-        0%,
-        100% {
-          box-shadow: 0 0 30px rgba(120, 180, 255, 0.2);
-        }
-        50% {
-          box-shadow: 0 0 60px rgba(120, 180, 255, 0.45);
-        }
-      }
 
       /* LETTER BOXES */
       .letter-box {
@@ -288,8 +276,9 @@
       }
       .vday-glow {
         box-shadow:
-          0 0 6px rgba(140, 190, 255, 0.18),
-          0 0 14px rgba(140, 190, 255, 0.12);
+          0 0 8px rgba(140, 190, 255, 0.157),
+          0 0 16px rgba(140, 190, 255, 0.18),
+          0 0 26px rgba(140, 190, 255, 0.12);
       }
     </style>
 
@@ -345,7 +334,7 @@
           <span class="letter-box vday-glow w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12">D</span><span class="letter-box vday-glow w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12">a</span><span class="letter-box vday-glow w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12">y</span>
         </span>
       </h1>
-      <p class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 mt-4 flex justify-center">
+      <p class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-2 mt-4 flex justify-center tracking-[0.35em]">
         <span class="-mr-2 w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">E</span>
         <span class="-mr-2 w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">M</span>
         <span class="-mr-2 w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">I</span>
@@ -357,20 +346,21 @@
         <span class="-mr-2 w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 small-caps letter-small">N</span>
       </p>
       <p>💙</p>
-      <p class="text-sm sm:text-base opacity-80 absolute bottom-[180px]">Touch anywhere... <br>To feel my heart beating for you...</p>
     </section>
 
-    <section class="min-h-screen flex items-center justify-center reveal" data-aos="fade-up">
-      <div id="storyBox" class="glow bg-card/80 backdrop-blur-xl p-4 sm:p-6 md:p-8 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-3xl rounded-3xl border border-white/10 h-[600px] flex flex-col justify-between">
+    <section class="min-h-screen flex flex-col items-center justify-center reveal" data-aos="fade-up">
+      <div class="text-center text-xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-wide mb-8">
+        Our Little Love Story
+      </div>
+      <div id="storyBox" class="bg-gradient-to-b from-card/80 to-transparent p-4 sm:p-6 md:p-8 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-3xl rounded-3xl h-[600px] flex flex-col">
         <div class="text-right text-xs sm:text-sm opacity-70 mb-2">
           <span id="count">1</span> / 6
         </div>
 
-        <div id="storyText" class="fade-in leading-relaxed text-sm sm:text-base md:text-lg pr-2"></div>
-
-        <div class="mt-6 text-center text-xs opacity-60">
-          Emilutta, Swipe left or right to navigate
-        </div>
+        <div id="storyText" class="fade-in leading-relaxed text-sm sm:text-base md:text-lg pr-2 flex-1 flex items-center"></div>
+      </div>
+      <div class="mt-4 text-center text-xs">
+        <span class="text-white">Emilutta,</span> <span class="opacity-60">Swipe left or right to navigate</span>
       </div>
     </section>
 
@@ -398,8 +388,8 @@
           And I’ll always remember this one as the beginning of something gentle
           and true. 💙
         </p>
-        <p class="mt-6 text-2xl sm:text-3xl md:text-4xl font-semibold">I Love You, Emil💙</p>
-        
+        <p class="mt-6 text-2xl sm:text-3xl md:text-4xl font-semibold">I Love You, Emil💙</p>        
+        <p class="text-sm sm:text-base opacity-80 mt-8">Touch anywhere... <br>To feel my heart beating for you...</p>
       </div>
     </section>
 
@@ -484,6 +474,7 @@
       const loveHours = document.getElementById("loveHours");
       const loveMinutes = document.getElementById("loveMinutes");
       const loveSeconds = document.getElementById("loveSeconds");
+      const storySlideClasses = ["story-out-left", "story-out-right", "story-in-left", "story-in-right"];
 
       const story = [
         "I didn’t fall in love with you all at once. In the beginning, you were just someone I knew — a familiar face from school, someone I saw, smiled at, and moved on. Life went on, years passed, and I never imagined you would become the most important part of my story. After school, in 2018, something slowly changed inside me. I didn’t understand it at first. I kept asking myself whether it was real love or just a passing feeling. I even thought time and distance would erase it. During the corona days, when we didn’t see each other for a long time, I believed that feeling would fade away. But the first time I saw you again after all that — even with a mask on — everything stopped inside me. I stood there frozen. That was when I understood the truth: this was not time pass, not curiosity. My heart had remembered you even when my mind tried to forget.",
@@ -510,40 +501,66 @@
       }
 
       function nextStory() {
-        storyText.className = "slide-left";
+        storyBox.classList.remove(...storySlideClasses);
+        storyBox.classList.add("story-out-left");
         setTimeout(() => {
           i++;
           if (i >= story.length) {
             i = 0; // Loop back to first story
           }
           storyText.innerText = story[i];
-          storyText.className = "slide-in-left";
+          storyBox.classList.remove("story-out-left");
+          storyBox.style.transition = "none";
+          storyBox.style.transform = "translateX(100px)";
+          requestAnimationFrame(() => {
+            storyBox.style.transform = "";
+            storyBox.classList.add("story-in-left");
+          });
           updateCount();
         }, 400);
       }
       function prevStory() {
-        storyText.className = "slide-right";
+        storyBox.classList.remove(...storySlideClasses);
+        storyBox.classList.add("story-out-right");
         setTimeout(() => {
           i--;
           if (i < 0) {
             i = story.length - 1; // Loop to last story
           }
           storyText.innerText = story[i];
-          storyText.className = "slide-in-right";
+          storyBox.classList.remove("story-out-right");
+          storyBox.style.transition = "none";
+          storyBox.style.transform = "translateX(-100px)";
+          requestAnimationFrame(() => {
+            storyBox.style.transform = "";
+            storyBox.classList.add("story-in-right");
+          });
           updateCount();
         }, 400);
       }
       
       let touchStartX = 0;
       let touchEndX = 0;
+      let isDragging = false;
 
       // Swipe gesture handling
       storyBox.addEventListener("touchstart", (e) => {
         touchStartX = e.changedTouches[0].screenX;
+        isDragging = true;
+        storyBox.style.transition = "none";
+      });
+
+      storyBox.addEventListener("touchmove", (e) => {
+        if (!isDragging) return;
+        const currentX = e.changedTouches[0].screenX;
+        const deltaX = currentX - touchStartX;
+        storyBox.style.transform = "translateX(" + deltaX + "px)";
       });
 
       storyBox.addEventListener("touchend", (e) => {
         touchEndX = e.changedTouches[0].screenX;
+        isDragging = false;
+        storyBox.style.transition = "transform 0.25s ease";
         handleSwipe();
       });
 
@@ -560,9 +577,14 @@
             prevStory();
           }
         }
+        storyBox.style.transform = "translateX(0)";
       }
 
       updateCount();
+
+      storyBox.addEventListener("animationend", () => {
+        storyBox.classList.remove(...storySlideClasses);
+      });
 
       function updateLoveTimer() {
         function spawnClockHeart(target) {
@@ -657,21 +679,9 @@
       );
       document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
 
-      const glowObs = new IntersectionObserver(
-        (e) => {
-          e.forEach((x) => {
-            x.isIntersecting
-              ? storyBox.classList.add("scroll-glow")
-              : storyBox.classList.remove("scroll-glow");
-          });
-        },
-        { threshold: 0.5 },
-      );
-      glowObs.observe(storyBox);
-
       // Heart rain on page load
       window.addEventListener('load', () => {
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 50; i++) {
           const drop = document.createElement("div");
           drop.className = "emoji-rain";
           drop.innerText = "💙";
@@ -686,4 +696,3 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   </body>
 </html>
-
